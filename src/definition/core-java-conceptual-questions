@@ -7,21 +7,35 @@ A. A programming language is a special language programmers use to develop softw
 
 
 What jdk contains or composed of and define each components?
-A.
+A.JDK are a set of tools and libraries that are needed to run a java program. jdk contains javac, which compiles java soure code. we have java tool which executes the bytecode from the java compiler. we also have jar tool which contains classes and methods that accomplish a specific task.
 
 
 
 
 
 What is IDE?
-A.
+A. integrated development environment. we write the java code here.
+
 What are the IDEs available in the market to support java?
+A. Eclipse,Intellij and Netbeans.
+
 Explain the entire java life cycle.
+A. java program is written and then compiled by a Java Compiler. From there, it turns it into a class, then it goes through an interpreter. This translates the java code into binary machine code. This is then outputted to the computer.
+
 what is class?
+A. A class is a blueprint of the object.
+
 What is object?
+A. Object is an instance of a class.
+
 What is the entry point of an application?
+A. The entry point of any java application is the main method
+
 Why main is static?
+A. if main was not static we would always have to create an instance of the main's class in order to use it.
+
 Which class is the superclass of all classes?
+A.
 What is difference between path and classpath variables?
 What is the difference between an Interface and Abstract class?
 Can you make an Object from an Interface and Abstract class ? if not how do you use it ?

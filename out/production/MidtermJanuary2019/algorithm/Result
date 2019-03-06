@@ -1,0 +1,4 @@
+
+Total Execution Time of 1000000 numbers in Selection Sort take: 383956 milli sec
+Total Execution Time of 1000000 numbers in Bubble Sort take: 1385791 milli sec
+Total Execution Time of 1000000 numbers in bucket Sort take: 19 milli sec

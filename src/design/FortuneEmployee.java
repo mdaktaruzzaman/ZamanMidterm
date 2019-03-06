@@ -1,4 +1,10 @@
 package design;
+import databases.ConnectToSqlDB;
+import databases.UserEmployee;
+import java.util.List;
+import java.io.IOException;
+import java.sql.SQLException;
+
 
 public class FortuneEmployee {
 
@@ -14,9 +20,14 @@ public class FortuneEmployee {
 	 *
 	 **/
 	public static void main(String[] args) {
-		
+			EmployeeInfo sad2=new EmployeeInfo(111);
+			sad2.departements();
+			sad2.assignDepartment();
+			sad2.calculateSalary();
+			sad2.calculateEmployeeBonus(4);
+			sad2.calculateEmployeePension();
 
 
-	}
+		}
 
 }
