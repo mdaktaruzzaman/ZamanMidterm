@@ -202,6 +202,23 @@ public void insertDataFromArrayToSqlTable(int [] ArrayData, String tableName, St
         }
     }
 
+    public void insertDataFromEmpToSqlTable(UserEmployee empl, String tableName, String empName, String empID)
+    {
+        try {
+            connectToSqlDatabase();
+            ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+empName+ "," +empID+ ") VALUES(?)");
+            ps.setString(1,empl.getEmplName());
+            ps.setString(2,empl.getEmplID());
+            ps.executeUpdate();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static List<User> readUserProfileFromSqlTable()throws IOException, SQLException, ClassNotFoundException{
         List<User> list = new ArrayList<>();
         User user = null;
@@ -221,6 +238,35 @@ public void insertDataFromArrayToSqlTable(int [] ArrayData, String tableName, St
                 //System.out.format("%s, %s\n", name, id);
                 user = new User(name,id, dob);
                 list.add(user);
+
+            }
+            st.close();
+        }catch (Exception e){
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
+        return list;
+    }
+
+    public static List<UserEmployee> readUserEmployeeProfileFromSqlTable()throws IOException, SQLException, ClassNotFoundException{
+        List<UserEmployee> list = new ArrayList<>();
+        UserEmployee userEmployee = null;
+        try{
+            Connection conn = connectToSqlDatabase();
+            String query = "SELECT * FROM Students";
+            // create the java statement
+            Statement st = conn.createStatement();
+            // execute the query, and get a java resultset
+            ResultSet rs = st.executeQuery(query);
+            // iterate through the java resultset
+            while (rs.next())
+            {
+                String name = rs.getString("stName");
+                String id = rs.getString("stID");
+                String dob = rs.getString("stDOB");
+                //System.out.format("%s, %s\n", name, id);
+                userEmployee = new UserEmployee(name,id, dob);
+                list.add(userEmployee);
 
             }
             st.close();

@@ -20,13 +20,17 @@ public class FortuneEmployee {
 	 *
 	 **/
 	public static void main(String[] args) {
-			EmployeeInfo sad2=new EmployeeInfo(111);
-			sad2.departements();
-			sad2.assignDepartment();
-			sad2.calculateSalary();
-			sad2.calculateEmployeeBonus(4);
-			sad2.calculateEmployeePension();
+			EmployeeInfo employee1=new EmployeeInfo(111);
+//		employee1.departements();
+//		employee1.assignDepartment();
+//		employee1.calculateSalary();
+//		employee1.calculateEmployeeBonus(4);
+//		employee1.calculateEmployeePension();
 
+
+		ConnectToSqlDB connect = new ConnectToSqlDB();
+
+		connect.insertDataFromEmpToSqlTable(new UserEmployee("Zaman", "007"), "PeopleNTech", "NAMEc", "IDc");
 
 		}
 
