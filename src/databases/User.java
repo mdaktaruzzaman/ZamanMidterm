@@ -1,42 +1,40 @@
 package databases;
 
 public class User {
-    String stName;
-    String stID;
-    String stDOB;
+    String Name;
+    String employeeID;
+    String nationality;
 
     public User(){}
-    public User(String stName, String stID){
-        this.stName = stName;
-        this.stID = stID;
+    public User(String Name, String employeeID){
+        this.Name = Name;
+        this.employeeID = employeeID;
     }
-    public User(String stName, String stID, String stDOB){
-        this.stName = stName;
-        this.stID = stID;
-        this.stDOB = stDOB;
+    public User(String Name, String employeeID, String nationality){
+        this.Name = Name;
+        this.employeeID = employeeID;
+        this.nationality = nationality;
 
     }
-    public String getStName() {
-        return stName;
+    public String getName() {
+        return Name;
     }
 
-    public void setStName(String stName) {
-        this.stName = stName;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public String getStID() {
-        return stID;
+    public String getEmployeeID() {
+        return employeeID;
     }
 
-    public void setStID(String stID) {
-        this.stID = stID;
+    public void setEmployeeID(String employeeID) {
+        this.employeeID = employeeID;
     }
 
-    public String getStDOB() {
-        return stDOB;
+    public String getNationality() {
+        return nationality;
     }
 
-    public void setStDOB(String stDOB) {
-        this.stDOB = stDOB;
-    }
+    public void setNationality(String nationality) { this.nationality = nationality; }
 }

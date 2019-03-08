@@ -16,27 +16,27 @@ public class UserEmployee {
         this.nationality = nationality;
 
     }
-    public String getEmplName() {
+    public String getName() {
         return Name;
     }
 
-    public void setEmplName(String emplName) {
+    public void setName(String Name) {
         this.Name = Name;
     }
 
-    public String getEmplID() {
+    public String getEmployeeID() {
         return employeeID;
     }
 
-    public void setEmplID(String emplID) {
+    public void setEmployeeID(String employeeID) {
         this.employeeID = employeeID;
     }
 
-    public String getEmplDOB() {
+    public String getNationality() {
         return nationality;
     }
 
-    public void setEmplDOB(String emplDOB) {
+    public void setNationality(String nationality) {
         this.nationality = nationality;
     }
 }

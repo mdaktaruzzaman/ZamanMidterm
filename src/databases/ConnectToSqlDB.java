@@ -183,13 +183,14 @@ public void insertDataFromArrayToSqlTable(int [] ArrayData, String tableName, St
     }
 
 
-    public void insertProfileToSqlTable(String tableName, String columnName1, String columnName2)
+    public void insertProfileToSqlTable(User user,String tableName, String columnName1, String columnName2, String columnName3)
     {
         try {
             connectToSqlDatabase();
-                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( " + columnName1 + "," + columnName2 + " ) VALUES(?,?)");
-                ps.setString(1,"Ankita Sing");
-                ps.setInt(2,3590);
+                ps = connect.prepareStatement("INSERT INTO "+tableName+" ( " + columnName1 + "," + columnName2 + "," +columnName3+") VALUES(?,?,?)");
+                ps.setString(1,user.getName());
+                ps.setString(2,user.getEmployeeID());
+                ps.setString( 3,user.getNationality() );
                 ps.executeUpdate();
 
 
@@ -202,13 +203,14 @@ public void insertDataFromArrayToSqlTable(int [] ArrayData, String tableName, St
         }
     }
 
-    public void insertDataFromEmpToSqlTable(UserEmployee empl, String tableName, String empName, String empID)
+    public void insertDataFromEmpToSqlTable(UserEmployee userEmployee, String tableName, String empName, String empID, String Nationality)
     {
         try {
             connectToSqlDatabase();
-            ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+empName+ "," +empID+ ") VALUES(?)");
-            ps.setString(1,empl.getEmplName());
-            ps.setString(2,empl.getEmplID());
+            ps = connect.prepareStatement("INSERT INTO "+tableName+" ( "+empName+ "," +empID+ "," +Nationality+") VALUES(?,?,?)");
+            ps.setString(1,userEmployee.getName());
+            ps.setString(2,userEmployee.getEmployeeID());
+            ps.setString(3,userEmployee.getNationality());
             ps.executeUpdate();
         } catch (IOException e) {
             e.printStackTrace();
@@ -224,7 +226,7 @@ public void insertDataFromArrayToSqlTable(int [] ArrayData, String tableName, St
         User user = null;
         try{
             Connection conn = connectToSqlDatabase();
-            String query = "SELECT * FROM Students";
+            String query = "SELECT * FROM employeeInfo";
             // create the java statement
             Statement st = conn.createStatement();
             // execute the query, and get a java resultset
@@ -232,11 +234,11 @@ public void insertDataFromArrayToSqlTable(int [] ArrayData, String tableName, St
             // iterate through the java resultset
             while (rs.next())
             {
-                String name = rs.getString("stName");
-                String id = rs.getString("stID");
-                String dob = rs.getString("stDOB");
+                String name = rs.getString("NAMEc");
+                String employeeID = rs.getString("IDc");
+                String nationality = rs.getString("NTIONc");
                 //System.out.format("%s, %s\n", name, id);
-                user = new User(name,id, dob);
+                user = new User(name,employeeID, nationality);
                 list.add(user);
 
             }
@@ -280,7 +282,7 @@ public void insertDataFromArrayToSqlTable(int [] ArrayData, String tableName, St
     public static void main(String[] args)throws IOException, SQLException, ClassNotFoundException {
         List<User> list = readUserProfileFromSqlTable();
         for(User user:list){
-            System.out.println(user.getStName() + " " + user.getStID()+ " " + user.getStDOB());
+            System.out.println(user.getName() + " " + user.getEmployeeID()+ " " + user.getNationality());
         }
     }
 }

@@ -29,11 +29,11 @@ public class ConnectToMongoDB {
     }
 
     public static String insertIntoToMongoDB(User user){
-        String profile = user.getStName();
+        String profile = user.getName();
         MongoDatabase mongoDatabase = connectToMongoDB();
         MongoCollection<Document> collection = mongoDatabase.getCollection("profile");
-        Document document = new Document().append("stName",user.getStName()).append("stID", user.getStID()).
-                append("stDOB",user.getStDOB());
+        Document document = new Document().append("Name",user.getName()).append("employeeID", user.getEmployeeID()).
+                append("Nationality",user.getNationality());
         collection.insertOne(document);
         return profile + " has been registered";
     }
@@ -63,13 +63,13 @@ public class ConnectToMongoDB {
         BasicDBObject basicDBObject = new BasicDBObject();
         FindIterable<Document> iterable = collection.find(basicDBObject);
         for(Document doc:iterable){
-            String stName = (String)doc.get("stName");
-            user.setStName(stName);
-            String stID = (String)doc.get("stID");
-            user.setStID(stID);
-            String stDOB = (String)doc.get("stDOB");
-            user.setStID(stDOB);
-            user = new User(stName,stID,stDOB);
+            String Name = (String)doc.get("Name");
+            user.setName(Name);
+            String employeeID = (String)doc.get("employeeID");
+            user.setEmployeeID(employeeID);
+            String Nationality = (String)doc.get("Nationality");
+            user.setNationality(Nationality);
+            user = new User(Name,employeeID,Nationality);
             list.add(user);
         }
         return list;
@@ -101,7 +101,7 @@ public class ConnectToMongoDB {
         insertIntoToMongoDB(new User("Naomi Chan", "4493","07-1996"));
         List<User> user = readUserProfileFromMongoDB();
         for(User person:user){
-            System.out.println(person.getStName()+ " "+ person.getStID());
+            System.out.println(person.getName()+ " "+ person.getEmployeeID()+ " " +person.getNationality());
         }
     }
 }
